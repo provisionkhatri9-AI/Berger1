@@ -15,19 +15,18 @@ public class colourDAO {
 
     public void insertColour(Colour c){
 
-        String sql = "INSERT INTO colour(type, color_name, litre_per_bucket, no_of_bucket, volume, base_name, price, stock) values (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO colour(type, color_name, litre_per_bucket, volume, base_name, price,stock) values (?,?,?,?,?,?,?)";
         try{
-
+            int i = 1;
             PreparedStatement ps= con.prepareStatement(sql);
 
             ps.setString(1, c.getType());
             ps.setString(2,c.getName());
             ps.setInt(3,c.getlitrePerBucket());
-            ps.setInt(4,c.getnoOfBuckets());
-            ps.setInt(5,c.getVolume());
-            ps.setString(6,c.getBaseName());
-            ps.setInt(7,c.getPrice());
-            ps.setInt(8,c.getStock());
+            ps.setInt(4,c.getVolume());
+            ps.setString(5,c.getBaseName());
+            ps.setInt(6,c.getPrice());
+            ps.setInt(7,c.getStock());
 
             ps.executeUpdate();
             System.out.print("SucessFUlly uploaded");
@@ -39,6 +38,36 @@ public class colourDAO {
         }
     }
 
+
+    public void updateDB(Colour c){
+        String sql;
+
+        String opertation = "add";
+
+        if(opertation.equals("add")){
+            sql = "UPDATE colour SET stock = stock + ?, volume = volume + ? WHERE color_name = ? AND base_name=? AND litre_per_bucket= ?";
+        }
+        else {
+            sql = "UPDATE colour SET stock = stock - ?,  volume = volume-?  WHERE color_name= ? AND base_name = ? AND litre_per_bucket=?";
+        }
+
+
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, c.getStock());
+            ps.setInt(2,c.getVolume());
+            ps.setString(3, c.getName());
+            ps.setString(4, c.getBaseName());
+            ps.setInt(5,c.getlitrePerBucket());
+
+
+            ps.executeUpdate();
+
+        }
+        catch (Exception e){
+            System.out.print("error");
+        }
+    }
     public void getInfo(){
         String sql = "SELECT * FROM colour ORDER BY id";
 
@@ -63,32 +92,6 @@ public class colourDAO {
         }
     }
 
-    public void updateDB(Colour c){
-        String sql;
-
-        String opertation = "add";
-
-        if(opertation.equals("add")){
-            sql = "UPDATE colour SET stock = stock + ? WHERE color_name = ? AND base_name=?";
-        }
-        else {
-            sql = "UPDATE colour SET stock = stock - ? WHERE color_name= ? AND base_name = ?";
-        }
-
-
-        try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, c.getStock());
-            ps.setString(2, c.getName());
-            ps.setString(3, c.getBaseName());
-
-            ps.executeUpdate();
-
-        }
-        catch (Exception e){
-            System.out.print("error");
-        }
-    }
 
 }
 

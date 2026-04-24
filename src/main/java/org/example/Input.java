@@ -47,10 +47,8 @@ public class Input {
             System.out.print("Enter Price");
             int price = sc.nextInt();
 
-            System.out.print("Enter Stock");
-            int stock = sc.nextInt();
 
-            return new Colour( type,colorName, baseName, litrePerBucket, numberOfBuckets,  price, stock);
+            return new Colour( type,colorName, baseName, litrePerBucket, numberOfBuckets, price);
 
         }
 
