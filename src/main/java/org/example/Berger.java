@@ -15,10 +15,14 @@ public class Berger {
         info.totalLitre();
         System.out.print(info.getName());
 
-        Connection con = DBconnection.getConnection();
-
-        colourDAO dao = new colourDAO(con);
-        dao.insertColour(info);
+//        Connection con = DBconnection.getConnection();
+//
+//        colourDAO dao = new colourDAO(con);
+////        dao.insertColour(info);
+//
+//        dao.getInfo();
+//
+//        dao.updateDB(info);
 
 
 

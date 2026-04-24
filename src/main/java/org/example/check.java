@@ -46,7 +46,21 @@ class CheckType{
         }
     }
 
+    public void printBase(String nameNumber){
+        for(Map.Entry<String, List<String>> entry : base.entrySet()){
+            String key = entry.getKey();
 
+
+            if(nameNumber.equals(key)){
+                List<String> base= entry.getValue();
+
+                int i =1;
+                for(String b : base){
+                    System.out.println(i++ + "." + b);
+                }
+            }
+        }
+    }
 
     public String checkType(String type){
         String choice = type;
@@ -86,34 +100,38 @@ class CheckType{
 
     public String checkName(String type, String nameNumber){
         if(type.equals("exterior")&& (nameNumber.equals("1") || nameNumber.equalsIgnoreCase("weathercoatallguard"))){
-            for (Map.Entry<String, List<String>> entry : base.entrySet()){
-                String colorName = entry.getKey();
-                if(colorName.equals("weathercoatallguard")){
-                    List<String> bases = entry.getValue();
-                    for(int i=0; i< bases.size(); i++){
-                        System.out.println((i+1)+"."+ bases.get(i));
+            nameNumber = "weathercoatallguard";
+            printBase(nameNumber);
 
-                    }
-                }
-            }
             return "WeatherCoatAllGuard";
         }
         else if(type.equals("exterior")&& nameNumber.equals("2") || nameNumber.equalsIgnoreCase("wallmasta")){
+            nameNumber = "wallmasta";
+            printBase(nameNumber);
             return "Wallmasta";
         }
-        else if(type.equals("Exterior")&& nameNumber.equals("3") ||  nameNumber.equalsIgnoreCase("weathercoatallguardxp")){
+        else if(type.equals("exterior")&& nameNumber.equals("3") ||  nameNumber.equalsIgnoreCase("weathercoatallguardxp")){
+            nameNumber="weathercoatallguardxp";
+            printBase(nameNumber);
             return "WeatherCoatAllGuardXP";
         }
-        else if(type.equals("Interior")&& nameNumber.equals("1") ||  nameNumber.equalsIgnoreCase("easyclean")){
+        else if(type.equals("interior")&& nameNumber.equals("1") ||  nameNumber.equalsIgnoreCase("easyclean")){
+            nameNumber = "easyclean";
+            printBase(nameNumber);
+
             return "EasyClean";
         }
-        else if(type.equals("Interior")&& nameNumber.equals("2") ||  nameNumber.equalsIgnoreCase("bison")){
+        else if(type.equals("interior")&& nameNumber.equals("2") ||  nameNumber.equalsIgnoreCase("bison")){
+            nameNumber = "bison";
+            printBase(nameNumber);
             return "Bison";
         }
-        else if(type.equals("Interior")&& nameNumber.equals("3") ||  nameNumber.equalsIgnoreCase("silkemulsion")){
+        else if(type.equals("interior")&& nameNumber.equals("3") ||  nameNumber.equalsIgnoreCase("silkemulsion")){
+            printBase("silkemulsion");
             return "SilkEmulsion";
         }
-        else if(type.equals("Interior")&& nameNumber.equals("4") ||  nameNumber.equalsIgnoreCase("silkglamour")){
+        else if(type.equals("interior")&& nameNumber.equals("4") ||  nameNumber.equalsIgnoreCase("silkglamour")){
+            printBase("silkglamour");
             return "SilkGlamour";
         }
         else {
